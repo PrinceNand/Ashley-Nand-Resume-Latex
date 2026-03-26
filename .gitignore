@@ -1,0 +1,31 @@
+# Build files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# Latexmk
+latexmkrc
+
+# PDF (optional — see below)
+# *.pdf
+
+# Backup files
+*.bak
+*.backup
+*.swp
+*~
+
+# Mac / Linux system files
+.DS_Store
+Thumbs.db

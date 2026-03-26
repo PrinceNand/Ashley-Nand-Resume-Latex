@@ -1,0 +1,36 @@
+%====================
+% Header: Contact
+%====================
+
+\RequirePackage{fancyhdr}
+
+\fancypagestyle{fancy}{%
+  \fancyhf{} % clear all header/footer
+
+  % Center header - Name, Role, and Contact info in single centered block
+  \chead{%
+    \centering
+    {\Huge \name} \\[0 em]
+    {\color{highlight} \Large \role} \\[0.5em]
+    {\small
+      \phone\enspace|\enspace
+      \city\enspace|\enspace
+      \href{mailto:\email}{\email}\enspace|\enspace
+      \href{https://github.com/\github}{github.com/\github}\enspace|\enspace
+      \href{https://www.linkedin.com/in/\LinkedIn}{linkedin.com/in/\LinkedIn}
+    }
+  }
+
+  % Header horizontal line
+  \renewcommand{\headrulewidth}{1pt}
+  \renewcommand{\headrule}{%
+    \hbox to\headwidth{%
+      \color{highlight}\leaders\hrule height \headrulewidth\hfill
+    }%
+  }
+}
+
+\pagestyle{fancy}
+
+\setlength{\headheight}{90pt} 
+\setlength{\headsep}{5pt} % slightly more space to avoid crowding
