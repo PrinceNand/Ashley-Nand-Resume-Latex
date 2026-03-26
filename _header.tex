@@ -3,25 +3,46 @@
 %====================
 
 \RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{ragged2e} 
+\RequirePackage{hyperref} % in case not loaded
+
+\definecolor{highlight}{RGB}{0,128,128}
 
 \fancypagestyle{fancy}{%
   \fancyhf{} % clear all header/footer
 
-  % Center header - Name, Role, and Contact info in single centered block
+  % Full header content in a single block
   \chead{%
-    \centering
-    {\Huge \name} \\[0 em]
-    {\color{highlight} \Large \role} \\[0.5em]
+    % Centered Name & Role at top
+    {\centering
+      {\Huge \name} \\[0em]
+      {\color{highlight} \Large \role} \\[0.5em]
+    }
+
+    % Justified Summary, max width
     {\small
-      \phone\enspace|\enspace
-      \city\enspace|\enspace
-      \href{mailto:\email}{\email}\enspace|\enspace
-      \href{https://github.com/\github}{github.com/\github}\enspace|\enspace
-      \href{https://www.linkedin.com/in/\LinkedIn}{linkedin.com/in/\LinkedIn}
+      \noindent
+      \begin{minipage}{\textwidth} % full page width
+        \justifying
+        \summary
+      \end{minipage}
+    }\\[0.7em]
+
+    % Contact Info centered
+    {\centering
+      {\small
+        \color{highlight} % apply color to everything in this block
+        \phone\enspace|\enspace
+        \city\enspace|\enspace
+        \href{mailto:\email}{\email}\enspace|\enspace
+        \href{https://github.com/\github}{github.com/\github}\enspace|\enspace
+        \href{https://www.linkedin.com/in/\LinkedIn}{linkedin.com/in/\LinkedIn}
+      }
     }
   }
 
-  % Header horizontal line
+  % Header line
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\headrule}{%
     \hbox to\headwidth{%
@@ -31,6 +52,5 @@
 }
 
 \pagestyle{fancy}
-
-\setlength{\headheight}{90pt} 
-\setlength{\headsep}{5pt} % slightly more space to avoid crowding
+\setlength{\headheight}{120pt} % increase to fit full summary comfortably
+\setlength{\headsep}{10pt}
