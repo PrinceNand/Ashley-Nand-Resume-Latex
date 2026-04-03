@@ -1,30 +1,50 @@
-# data-science-tech-resume-template
-## OFFICIAL PUBLIC OVERLEAF TEMPLATE
-https://www.overleaf.com/latex/templates/data-science-tech-resume-template/zcdmpfxrzjhv
+# LaTeX Resume (Docker)
 
-Applicant tracking system (ATS), especially older ones, do not like PDFs that have links in them. If such an issue arises, simply take the output pdf and print to another pdf, which would be the quickest way to remove "active contents" in the file.
+This project lets you build your LaTeX resume inside a Docker container—no need to install LaTeX locally.
 
-Resume template for data scientists, a complement to data-science-tech-cover-letter-template:
-https://www.overleaf.com/latex/templates/data-science-tech-cover-letter-template/gbrcqktbsfxf
+---
 
-![cover](https://github.com/TimmyChan/data-science-tech-resume-template/blob/main/data_science_tech_resume_template1024_1.png?raw=true)
+## 📦 Prerequisites
+- Docker installed: https://www.docker.com/
 
-### Files:
-- resume.tex: Main file
-- _header.tex: header code
-- TLCresume.sty: style file containing formatting details
-- section/objective: https://www.indeed.com/career-advice/resumes-cover-letters/resume-objective-examples
-- section/skills: table of skills
-- section/experience: projects or roles
-- section/education: schools and stuff
-- section/activities: optional, could comment out in resume.tex.
+---
+
+## 🛠️ Build the Docker Image
+
+```bash
+docker build -t resume-builder .
+```
+
+---
+
+## 📄 Generate Resume PDF (Live Update)
+
+Run in **interactive mode** so that saving `.tex` files automatically rebuilds the PDF.
+
+### 🐧 Mac / Linux
+```bash
+docker run --rm -it -v $(pwd):/app resume-builder
+```
+
+### 🪟 Windows (PowerShell)
+```powershell
+docker run --rm -it -v "${PWD}:/app" resume-builder latexmk -pvc -pdf -interaction=nonstopmode resume.tex
+```
+
+### 🪟 Windows (Command Prompt - CMD)
+```cmd
+docker run --rm -it -v "%cd%":/app resume-builder latexmk -pvc -pdf -interaction=nonstopmode resume.tex
+```
 
 
-### Editor:
-https://github.com/TimmyChan 
-https://www.linkedin.com/in/timmy-l-chan/
-#### Contributors: 
-https://github.com/xiazeyu
-https://github.com/iamgmujtaba
-               
-### Last Updated: April 11th, 2022
+## 📄 Generate Resume PDF (No Live Update)
+
+### 🪟 Windows (PowerShell)
+```powershell
+docker run --rm -v "${PWD}:/app" resume-builder latexmk -pdf -interaction=nonstopmode resume.tex
+```
+
+### 🪟 Windows (Command Prompt - CMD)
+```cmd
+docker run --rm -v "%cd%":/app resume-builder latexmk -pdf -interaction=nonstopmode resume.tex
+```
