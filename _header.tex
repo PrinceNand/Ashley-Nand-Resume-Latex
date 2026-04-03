@@ -14,37 +14,42 @@
 
   % Full header content in a single block
   \chead{%
-    % Centered Name & Role at top
-    {\centering
-      {\Huge \name} \\[0em]
-      {\color{highlight} \Large \role} \\[0.5em]
+    \vspace{12pt} % move entire header content (name, role, contacts) slightly down
+
+    % Name & Role left-aligned at top
+    {\RaggedRight
+      {\Huge \name} \\[0.3em]  % small space after name
+      {\color{highlight} \Large \role} \\[0.2em] % small space before contact
     }
 
     % Justified Summary, max width
+    % {\small
+    %   \noindent
+    %   \begin{minipage}{\textwidth} % full page width
+    %     \justifying
+    %     \input{sections/summary}
+    %   \end{minipage}
+    % }\\[0.2em]
+
+    % Contact Info justified
     {\small
       \noindent
-      \begin{minipage}{\textwidth} % full page width
+      \begin{minipage}{\textwidth} % full width for justification
         \justifying
-        \summary
-      \end{minipage}
-    }\\[0.7em]
-
-    % Contact Info centered
-    {\centering
-      {\small
         \color{highlight} % apply color to everything in this block
         \phone\enspace|\enspace
         \city\enspace|\enspace
         \href{mailto:\email}{\email}\enspace|\enspace
         \href{https://github.com/\github}{github.com/\github}\enspace|\enspace
         \href{https://www.linkedin.com/in/\LinkedIn}{linkedin.com/in/\LinkedIn}
-      }
-    }
+      \end{minipage}
+    }% <- no trailing space
   }
 
   % Header line
   \renewcommand{\headrulewidth}{1pt}
   \renewcommand{\headrule}{%
+    \vspace{-10pt} % keep line tight under contacts
     \hbox to\headwidth{%
       \color{highlight}\leaders\hrule height \headrulewidth\hfill
     }%
@@ -52,5 +57,5 @@
 }
 
 \pagestyle{fancy}
-\setlength{\headheight}{120pt} % increase to fit full summary comfortably
-\setlength{\headsep}{10pt}
+\setlength{\headheight}{85pt} % keep previous height
+\setlength{\headsep}{5pt}     % minimal gap to main text
